@@ -13,6 +13,13 @@ include_once "includes/header.php";
         <div class="row">
             <?php
             include "../conexion.php";
+            if ($_SESSION['rol'] == 1) {
+                $query = mysqli_query($conexion, "SELECT * FROM sucursal WHERE estado = 1");
+            }else{
+                $query = mysqli_query($conexion, "SELECT s.id, s.direccion, s.cajas, s.estado FROM sucursal s
+                                                    inner join usuarios u
+                                                    on s.id = u.sucursal_id where u.id = $id");
+            }
             $query_users = mysqli_query($conexion, "SELECT * FROM usuarios WHERE estado = 1");
             $result = mysqli_num_rows($query);
             if ($result > 0) {
