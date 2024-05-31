@@ -25,6 +25,8 @@ if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {
                 $nombre = $foto_actual;
             }
 
+
+            
             if (empty($id)) {
                 $query = mysqli_query($conexion, "SELECT * FROM productos WHERE nombre = '$producto' AND estado = 1");
                 $result = mysqli_fetch_array($query);
